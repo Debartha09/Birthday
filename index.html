@@ -1073,9 +1073,17 @@ function toggleMusic(){
   const btn=document.getElementById('music-btn');
   const lbl=document.getElementById('music-label');
   if(!playing){
-    a.play().then(()=>{playing=true;lbl.textContent='Pause';btn.classList.add('playing');})
-            .catch(()=>{lbl.textContent='Play Music';});
-  } else {
+    a.currentTime = 5;   // Start from 00:05
+    a.play().then(()=>{
+        playing = true;
+        lbl.textContent = 'Pause';
+        btn.classList.add('playing');
+    }).catch(()=>{
+        lbl.textContent = 'Play Music';
+    });
+}
+  
+  else {
     a.pause(); playing=false; lbl.textContent='Play Music'; btn.classList.remove('playing');
   }
 }
